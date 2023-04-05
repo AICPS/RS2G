@@ -1,1 +1,1 @@
-# data2graph
+# RoadScene2Graph (RS2G)
