@@ -1,3 +1,6 @@
+#Copied from https://github.com/AICPS/roadscene2vec
+#Copyright (c) 2021 UC Irvine Advanced Integrated Cyber-Physical Systems Lab (AICPS)
+
 import os
 import sys
 
