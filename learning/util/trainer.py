@@ -5,7 +5,7 @@ import os
 import sys
 from pathlib import Path
 
-sys.path.append(str(Path("../../")))
+sys.path.append(os.path.dirname(sys.path[0]))
 import torch
 import torch.optim as optim
 import torch.nn as nn
@@ -14,15 +14,9 @@ import random
 import warnings
 warnings.simplefilter(action='ignore', category=FutureWarning)
 
-from roadscene2vec.learning.model.cnn_lstm import CNN_LSTM_Classifier
-from roadscene2vec.learning.model.lstm import LSTM_Classifier
-from roadscene2vec.learning.model.mrgcn import MRGCN
-from roadscene2vec.learning.model.mrgin import MRGIN
-from roadscene2vec.learning.model.cnn import CNN_Classifier
-from roadscene2vec.learning.model.resnet50_lstm import ResNet50_LSTM_Classifier
-from roadscene2vec.learning.model.resnet50 import ResNet50_Classifier
-from roadscene2vec.learning.model.ss_mrgcn import SSMRGCN #self-supervised
-from roadscene2vec.learning.model.ss_vmrgcn import SSVMRGCN #self-supervised variational MRGCN
+from learning.model.cnn_lstm import CNN_LSTM_Classifier
+from learning.model.mrgcn import MRGCN
+from learning.model.rs2g import RS2G
 
 
 '''Class implementing basic trainer functionality such as model building, saving, and loading.'''
@@ -71,28 +65,13 @@ class Trainer:
         #self.config.num_relations = max([r.value for r in Relations])+1
         if self.config.model_config["model"] == "mrgcn":
             self.model = MRGCN(self.config).to(self.config.model_config["device"])
-        elif self.config.model_config["model"] == "ssmrgcn":
-            self.model = SSMRGCN(self.config).to(self.config.model_config["device"])
-        elif self.config.model_config["model"] == "ssvmrgcn":
-            self.model = SSVMRGCN(self.config).to(self.config.model_config["device"])
-        elif self.config.model_config["model"]  == "mrgin":
-            self.model = MRGIN(self.config).to(self.config.model_config["device"])
-        elif self.config.model_config["model"]  == "cnn":
-            self.model = CNN_Classifier((self.config.training_config['batch_size'], self.frame_limit,self.color_channels, self.im_height, self.im_width), self.config).to(self.config.model_config["device"])
+        elif self.config.model_config["model"] == "rs2g":
+            self.model = RS2G(self.config).to(self.config.model_config["device"])
         elif self.config.model_config["model"]  == "cnn_lstm":
             self.model = CNN_LSTM_Classifier((self.config.training_config['batch_size'], self.frame_limit,self.color_channels, self.im_height, self.im_width), self.config).to(self.config.model_config["device"])
-        elif self.config.model_config["model"]  == "lstm":
-            self.model = LSTM_Classifier((self.config.training_config['batch_size'], self.frame_limit,self.color_channels, self.im_height, self.im_width),'lstm', self.config).to(self.config.model_config["device"])        
-        elif self.config.model_config["model"]  == "gru":
-            self.model = LSTM_Classifier((self.config.training_config['batch_size'], self.frame_limit,self.color_channels, self.im_height, self.im_width), 'gru', self.config).to(self.config.model_config["device"]) 
-        elif self.config.model_config["model"] == "resnet50_lstm":
-            self.model = ResNet50_LSTM_Classifier((self.config.training_config['batch_size'], self.frame_limit,self.color_channels, self.im_height, self.im_width), self.config).to(self.config.model_config["device"]) 
-        elif self.config.model_config["model"] == "resnet50":
-            self.model = ResNet50_Classifier((self.config.training_config['batch_size'], self.frame_limit,self.color_channels, self.im_height, self.im_width), self.config).to(self.config.model_config["device"]) 
         else:
             raise Exception("model selection is invalid: " + self.config.model_config["model"])
         
-        #TODO: enable users to choose between Adam or SGD optimizer. also enable users to choose between CrossEntropyLoss, MAELoss, MSELoss, etc. in the config.yaml
         self.optimizer = optim.Adam(self.model.parameters(), lr=self.config.training_config["learning_rate"], weight_decay=self.config.training_config["weight_decay"])
         
         if self.config.model_config["load_model"]  == False:

@@ -5,7 +5,7 @@ location_data:
     
 model_config:
   num_relations: 12 #num of types of relations extracted, needed only for graph based models 
-  model: 'ssmrgcn' 
+  model: 'rs2g' 
   num_layers: 2 #defines number of RGCN conv layers.
   load_model: True #load pretrained model
   num_of_classes: 15 #8 #num of actors

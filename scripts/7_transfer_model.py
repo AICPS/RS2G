@@ -3,7 +3,7 @@ import sys
 sys.path.append(os.path.dirname(sys.path[0]))
 from learning.util.image_trainer import Image_Trainer
 from learning.util.scenegraph_trainer import Scenegraph_Trainer
-from learning.util.ss_scenegraph_trainer import SS_Scenegraph_Trainer
+from learning.util.rs2g_trainer import RS2G_Trainer
 from util.config_parser import configuration
 import wandb
 
@@ -28,8 +28,8 @@ def train_Trainer(learning_config):
         trainer.eval_model(current_epoch=0)
         
     elif learning_config.training_config["dataset_type"] == "scenegraph":
-        if learning_config.model_config['model'] in ['ssmrgcn']:
-            trainer = SS_Scenegraph_Trainer(learning_config, wandb_arg)
+        if learning_config.model_config['model'] in ['rs2g']:
+            trainer = RS2G_Trainer(learning_config, wandb_arg)
         else:
             trainer = Scenegraph_Trainer(learning_config, wandb_arg)
         trainer.build_transfer_learning_dataset()

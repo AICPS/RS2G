@@ -15,10 +15,10 @@ from torch_geometric.loader import DataLoader
 
 '''data-driven implementation of MRGCN (RS2G).'''
 
-class SSMRGCN(nn.Module):
+class RS2G(nn.Module):
     
     def __init__(self, config):
-        super(SSMRGCN, self).__init__()
+        super(RS2G, self).__init__()
         self.num_features = config.model_config['num_of_classes']
         self.num_relations = config.model_config['num_relations']
         self.num_classes  = config.model_config['nclass']

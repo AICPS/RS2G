@@ -17,9 +17,9 @@ from learning.util.metrics import get_metrics, log_wandb, log_wandb_transfer_lea
 
 '''trainer for RS2G data-driven MRGCN model.'''
 
-class SS_Scenegraph_Trainer(Trainer):
+class RS2G_Trainer(Trainer):
     def __init__(self, config, wandb_a = None):
-        super(SS_Scenegraph_Trainer, self).__init__(config, wandb_a)
+        super(RS2G_Trainer, self).__init__(config, wandb_a)
         self.scene_graph_dataset = SceneGraphDataset()
         self.feature_list = list()
         for i in range(self.config.model_config['num_of_classes']):
