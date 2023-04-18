@@ -1,7 +1,7 @@
 ---
 location_data:
     input_path: './roadscene2vec_pkls/271_carla_10frame_roadscene2vec.pkl' #path to pkl containing scenegraph dataset training/testing data
-    transfer_path: './roadscene2vec_pkls/620_dash_10frame_roadscene2vec.pkl' #path to transfer dataset for transfer learning
+    transfer_path: './roadscene2vec_pkls/1043_carla_10frame_roadscene2vec.pkl' #path to transfer dataset for transfer learning
     
 model_config:
   num_relations: 12 #num of types of relations extracted, needed only for graph based models 
