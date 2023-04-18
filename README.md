@@ -9,8 +9,12 @@ The main changes are the addition of the RS2G [model](https://github.com/AICPS/R
 
 Configuration parameters for the RS2G model as well as the baselines are available in config/. All hyperparameter tuning can be done via changes to these config files.
 
-# Installation
+## Installation
 Installation follows the same procedure as roadscene2vec. Please follow the installation instructions for that library located [here](https://github.com/AICPS/roadscene2vec/blob/main/README.md#general-python-setup). At a minimum, you will need Python 3, PyTorch, and PyTorch Geometric. 
+
+## Datasets
+Our synthetic datasets can be downloaded at the following link: https://drive.google.com/drive/folders/1Zpzfvt_4jlgEiI8eE0HdICu4xkoug5jq?usp=sharing.
+We do not have permission to publicly share the HDD dataset or the Traffic-Anomaly dataset. If you would like to use these datasets or others, please follow the instructions from roadscene2vec for [real-image scene-graph extraction](https://github.com/AICPS/roadscene2vec#use-case-1-converting-an-ego-centric-observation-image-into-a-scene-graph).
 
 
 ## Model Training and Evaluation
