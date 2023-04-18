@@ -9,6 +9,16 @@ The main changes are the addition of the RS2G [model](https://github.com/AICPS/R
 
 Configuration parameters for the RS2G model as well as the baselines are available in config/. All hyperparameter tuning can be done via changes to these config files.
 
+Please cite our paper if you find our code or paper useful for your research:
+```
+@article{malawade2023rs2g,
+  title={RS2G: Data-Driven Scene-Graph Extraction and Embedding for Robust Autonomous Perception and Scenario Understanding},
+  author={Malawade, Arnav Vaibhav and Yu, Shih-Yuan and Wang, Junyao and Al Faruque, Mohammad Abdullah},
+  journal={arXiv preprint},
+  year={2023}
+}
+```
+
 ## Installation
 Installation follows the same procedure as roadscene2vec. Please follow the installation instructions for that library located [here](https://github.com/AICPS/roadscene2vec/blob/main/README.md#general-python-setup). At a minimum, you will need Python 3, PyTorch, and PyTorch Geometric. 
 
