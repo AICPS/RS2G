@@ -1,7 +1,7 @@
 # RoadScene2Graph (RS2G)
 
 ## Description
-This repository contains the code for our paper titled "RS2G: Data-Driven Scene-Graph Extraction and Embedding for Robust Autonomous Perception and Scenario Understanding"
+This repository contains the code for our paper titled ["RS2G: Data-Driven Scene-Graph Extraction and Embedding for Robust Autonomous Perception and Scenario Understanding"](https://arxiv.org/abs/2304.08600)
 
 The repository is based on the structure and code from roadscene2vec, available [here](https://github.com/AICPS/roadscene2vec).
 
@@ -12,10 +12,10 @@ Configuration parameters for the RS2G model as well as the baselines are availab
 Please cite our paper if you find our code or paper useful for your research:
 ```
 @article{malawade2023rs2g,
-  title={RS2G: Data-Driven Scene-Graph Extraction and Embedding for Robust Autonomous Perception and Scenario Understanding},
-  author={Malawade, Arnav Vaibhav and Yu, Shih-Yuan and Wang, Junyao and Al Faruque, Mohammad Abdullah},
-  journal={arXiv preprint},
-  year={2023}
+      title={RS2G: Data-Driven Scene-Graph Extraction and Embedding for Robust Autonomous Perception and Scenario Understanding}, 
+      author={Arnav Vaibhav Malawade and Shih-Yuan Yu and Junyao Wang and Mohammad Abdullah Al Faruque},
+      year={2023},
+      journal={arXiv preprint arXiv:2304.08600}
 }
 ```
 
